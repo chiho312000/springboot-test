@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class User {
+public class UserResponse {
     private String name;
     private String gender;
 
