@@ -29,4 +29,5 @@ public class UserController extends ApiController {
         if (user == null) throw new NotFoundException();
         return userMapper.map(user);
     }
+    
 }

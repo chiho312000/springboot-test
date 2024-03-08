@@ -7,6 +7,7 @@ plugins {
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
+var mapstructVersion = "1.6.0.Beta1"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_17
@@ -30,19 +31,21 @@ dependencies {
 	}
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
-	implementation("org.mapstruct:mapstruct:1.5.5.Final")
-	annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
-	implementation("org.projectlombok:lombok-mapstruct-binding:0.1.0")
+	implementation("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+	implementation("org.mapstruct:mapstruct:${mapstructVersion}")
+	annotationProcessor("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+	annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 
 	compileOnly("org.projectlombok:lombok")
 
 
-	annotationProcessor("org.projectlombok:lombok")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.compileJava {
-	options.compilerArgs = listOf("-Amapstruct.defaultComponentModel=spring")
+	options.compilerArgs.plusAssign(listOf("-Amapstruct.defaultComponentModel=spring"))
 }
 
 tasks.withType<Test> {
