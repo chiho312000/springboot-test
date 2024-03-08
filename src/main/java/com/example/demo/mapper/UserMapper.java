@@ -12,4 +12,6 @@ import org.springframework.stereotype.Component;
 public interface UserMapper {
 
     UserResponse map(User user);
+
+    User map(UserResponse userResponse);
 }
