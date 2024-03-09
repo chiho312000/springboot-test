@@ -1,0 +1,11 @@
+<configuration>
+    <appender name="STDOUT"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%i{X-Forwarded-For} %h %l %u %t{yyyy-MM-dd
+                HH:mm:ss.SSS,Asia/Hong_Kong} ACCESS "%r" "%i{Referer}"
+                "%i{User-Agent}" [THREAD=%I] %s %b **%D/*%T "platformVersion=%i{platformVersion}"</Pattern>
+        </encoder>
+    </appender>
+    <appender-ref ref="STDOUT" />
+</configuration>
