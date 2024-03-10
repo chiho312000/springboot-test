@@ -29,6 +29,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web") {
 		exclude("org.springframework.boot", "spring-boot-starter-logging")
 	}
+	implementation("org.apache.commons:commons-collections4:4.4")
+	implementation("org.apache.commons:commons-lang3:3.14.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.projectlombok:lombok-mapstruct-binding:0.2.0")
