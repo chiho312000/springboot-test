@@ -10,6 +10,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
 public class DateTimeUtil {
+
     public static ZoneId DEFAULT_ZONE = ZoneId.of("Asia/Hong_Kong");
 
     public static DateTimeFormatter dateTimeFormatter = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
