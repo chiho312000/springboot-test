@@ -9,13 +9,22 @@ import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
+import static java.time.temporal.ChronoField.*;
+import static java.time.temporal.ChronoField.DAY_OF_MONTH;
+
 public class DateTimeUtil {
 
     public static ZoneId DEFAULT_ZONE = ZoneId.of("Asia/Hong_Kong");
 
-    public static DateTimeFormatter dateTimeFormatter = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-            .parseDefaulting(ChronoField.NANO_OF_SECOND, 000).toFormatter().withLocale(Locale.UK)
-            .withZone(DEFAULT_ZONE);
+    public static DateTimeFormatter dateTimeFormatter = new DateTimeFormatterBuilder()
+            .appendOptional(DateTimeFormatter.ofPattern("yyyy[-MM][-dd][['T']HH[:mm][:ss][.SSS][XXX]]"))
+            .parseDefaulting(HOUR_OF_DAY, 1L)
+            .parseDefaulting(MINUTE_OF_HOUR, 1L)
+            .parseDefaulting(SECOND_OF_MINUTE, 1L)
+            .parseDefaulting(YEAR_OF_ERA, 2001L)
+            .parseDefaulting(MONTH_OF_YEAR, 1L)
+            .parseDefaulting(DAY_OF_MONTH, 1L)
+            .toFormatter();
 
     public static Instant stringToInstant(String input) throws Exception {
         try {
@@ -53,7 +62,7 @@ public class DateTimeUtil {
 
     public static String offsetDateTimeToIsoString(OffsetDateTime dateTime, String format) {
         DateTimeFormatter formatter = new DateTimeFormatterBuilder().appendPattern(format)
-                .parseDefaulting(ChronoField.NANO_OF_SECOND, 000).toFormatter().withLocale(Locale.UK)
+                .parseDefaulting(ChronoField.NANO_OF_SECOND, 0).toFormatter().withLocale(Locale.UK)
                 .withZone(DEFAULT_ZONE);
         return formatter.format(dateTime);
     }

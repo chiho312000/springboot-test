@@ -1,6 +1,7 @@
 package com.example.demo.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
@@ -20,12 +21,13 @@ public class RequestAdvice extends RequestBodyAdviceAdapter {
 
 
     @Override
-    public boolean supports(MethodParameter methodParameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
+    public boolean supports(@NonNull MethodParameter methodParameter, @NonNull Type targetType, @NonNull Class<? extends HttpMessageConverter<?>> converterType) {
         return true;
     }
 
     @Override
-    public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
+    @NonNull
+    public Object afterBodyRead(@NonNull Object body, @NonNull HttpInputMessage inputMessage, @NonNull MethodParameter parameter, @NonNull Type targetType, @NonNull Class<? extends HttpMessageConverter<?>> converterType) {
         return super.afterBodyRead(body, inputMessage, parameter, targetType, converterType);
     }
 }
