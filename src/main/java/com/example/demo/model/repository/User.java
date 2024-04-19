@@ -1,5 +1,6 @@
 package com.example.demo.model.repository;
 
+import com.example.demo.annotation.Mask;
 import com.example.demo.model.common.CommonConstant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,11 +22,14 @@ public class User extends BaseMongoObject {
 
     @BsonId
     private ObjectId _id;
-
+    
     private String name;
     private CommonConstant.GENDER gender;
 
     @Indexed(unique = true)
     private String email;
+
+    @Mask
+    private String passwordHash;
 
 }
