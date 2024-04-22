@@ -14,23 +14,23 @@ import lombok.experimental.SuperBuilder;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 public class UserResponse {
 
 
-    @NotEmpty
+    @NotEmpty(message = "Name must not be empty")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Gender must not be empty")
     private CommonConstant.GENDER gender;
 
-    @Email
-    @NotEmpty
+    @Email(message = "Email invalid format")
+    @NotEmpty(message = "Email must bot be empty")
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = "Password must not be empty")
     @Mask
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$", message = "Password must have valid format")
     private String password;
 
 }
